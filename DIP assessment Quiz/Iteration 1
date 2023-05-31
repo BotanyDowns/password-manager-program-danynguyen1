@@ -1,0 +1,76 @@
+# Multiple-Choice General Knowledge Quiz about New Zealand
+
+
+# Define a list of questions and answers
+questions = [
+    {
+        "question": "What is the capital of New Zealand?",
+        "options": ["A. Auckland", "B. Wellington", "C. Sydney", "D. Melbourne"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the biggest mountian in New Zealand?",
+        "options": ["A. Mount Cook", "B. Mount Tasman", "C. Mount Ruapehu", "D. Mount Taranaki"],
+        "answer": "A"
+    },
+    {
+        "question": "What is the largest city in New Zealand?",
+        "options": ["A. Christchurch", "B. Wellington", "C. Auckland", "D. Queenstown"],
+        "answer": "C"
+    },
+    {
+        "question": "When did the ANZAC land at Gallipoli?",
+        "options": ["A. 20th April, 1915", "B. 25th April, 1915", "C. 15th April, 1916", "D. 30th April, 1915"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the name of the famous movie trilogy that was filmed in New Zealand?",
+        "options": ["A. Star Wars", "B. Lord Of The Rings", "C. Harry Potter", "D. The Matrix"],
+        "answer": "B"
+    },
+    {
+        "question": "What ocean surrounds New Zealand?",
+        "options": ["A. Atlantic Ocean", "B. Pacific Ocean", "C. Indian Ocean", "D. Artic Ocean"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the name of New Zealands National rugby team?",
+        "options": ["A. Black Caps", "B. Breakers", "C. Nz Blues", "D. All Blacks"],
+        "answer": "D"
+    },
+    {
+        "question": "Who is New Zealands current prime minister?",
+        "options": ["A. Jacinda Ardern", "B. Winston Peters", "C. Chris Hipkins", "D. Bill English"],
+        "answer": "C"
+    },
+    {
+        "question": "What percentage of New Zealands population is Maori?",
+        "options": ["A. 16.5%", "B. 20%", "C. 71.8%", "D. 15.3%"],
+        "answer": "A"
+    },
+    {
+        "question": "When was the treaty of waitangi signed?",
+        "options": ["A. 6th February 1840", "B. 10th Feburary 1840", "C. 8th March 1841", "D. 21st Feburary 1840"],
+        "answer": "A"
+    }
+]
+
+# Ask each question and check if the answer is correct
+score = 0
+for q in questions:
+    print(q["question"])
+    for option in q["options"]:
+        print(option)
+    user_answer = input("Enter your answer (A/B/C/D): ")
+    if user_answer.upper() == q["answer"]:
+        print("Correct!")
+        score += 1
+    else:
+        print("Incorrect. The correct answer is", q["answer"])
+
+# Printing of the final score
+print("You scored", score, "out of", len(questions))
+
+
+
+ 
