@@ -1,0 +1,103 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# at the start of quiz will ask for users name
+name = input("Enter your name: ")
+
+# Defining a list if questions and answers for the questions
+questions = [
+    {
+        "question": "What is the capital of New Zealand?",
+        "options": ["A. Auckland", "B. Wellington", "C. Sydney", "D. Melbourne"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the biggest mountian in New Zealand?",
+        "options": ["A. Mount Cook", "B. Mount Tasman", "C. Mount Ruapehu", "D. Mount Taranaki"],
+        "answer": "A"
+    },
+    {
+        "question": "What is the largest city in New Zealand?",
+        "options": ["A. Christchurch", "B. Wellington", "C. Auckland", "D. Queenstown"],
+        "answer": "C"
+    },
+    {
+        "question": "When did the ANZAC land at Gallipoli??",
+        "options": ["A. 20th April, 1915", "B. 25th April, 1915", "C. 15th April, 1916", "D. 30th April, 1915"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the name of the famous movie trilogy that was filmed in New Zealand?",
+        "options": ["A. Star Wars", "B. Lord Of The Rings", "C. Harry Potter", "D. The Matrix"],
+        "answer": "B"
+    },
+    {
+        "question": "What ocean surrounds New Zealand?",
+        "options": ["A. Atlantic Ocean", "B. Pacific Ocean", "C. Indian Ocean", "D. Artic Ocean"],
+        "answer": "B"
+    },
+    {
+        "question": "What is the name of New Zealands National rugby team?",
+        "options": ["A. Black Caps", "B. Breakers", "C. Nz Blues", "D. All Blacks"],
+        "answer": "D"
+    },
+    {
+        "question": "Who is New Zealands current prime minister?",
+        "options": ["A. Jacinda Ardern", "B. Winston Peters", "C. Chris Hipkins", "D. Bill English"],
+        "answer": "C"
+    },
+    {
+        "question": "What percentage of New Zealands population is Maori?",
+        "options": ["A. 16.5%", "B. 20%", "C. 71.8%", "D. 15.3%"],
+        "answer": "A"
+    },
+    {
+        "question": "When was the treaty of waitangi signed?",
+        "options": ["A. 6th February 1840", "B. 10th Feburary 1840", "C. 8th March 1841", "D. 21st Feburary 1840"],
+        "answer": "A"
+    }
+]
+
+# defining the show questions, this will show the questions and options, enumerate function assigns numbers to each item in lists to code can function
+def show_question():
+    question_label.config(text=questions[current_question]["question"])
+    for i, option in enumerate(questions[current_question]["options"]):
+        option_buttons[i].config(text=option)
+
+def check_answer(selected_option):
+    global current_question, score
+    selected_answer = selected_option[0]
+    
+    if selected_answer == questions[current_question]["answer"]:
+        score += 1
+        messagebox.showinfo("Result", "Correct!")
+    else:
+        messagebox.showinfo("Result", f"Incorrect. The correct answer is {questions[current_question]['answer']}")
+    
+    current_question += 1
+    
+    if current_question < len(questions):
+        show_question()
+    else:
+        messagebox.showinfo("Quiz Finished", f"{name}, you scored {score} out of {len(questions)}. Well done!")
+
+# Variables
+current_question = 0
+score = 0
+
+# GUI window setup
+window = tk.Tk()
+window.title("Quiz about New Zealand")
+
+question_label = tk.Label(window, text="")
+question_label.pack(pady=10)
+
+option_buttons = []
+for i in range(4):
+    option_button = tk.Button(window, text="", width=30, command=lambda i=i: check_answer(option_buttons[i]["text"]))
+    option_button.pack(pady=5)
+    option_buttons.append(option_button)
+
+show_question()
+
+window.mainloop()
